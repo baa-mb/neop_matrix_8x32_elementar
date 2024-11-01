@@ -142,7 +142,7 @@ strip = neopixel.create(DigitalPin.P0, 256, NeoPixelMode.RGB)
 strip.setBrightness(128)
 
 strip.clear()
-
+let zeigen=true;
 strip.show()
 // Initialisierung
 setze_bst(akt_bst)
@@ -153,7 +153,14 @@ basic.forever(function () {
     basic.pause(200)
     anz_bst += 1
     if (anz_bst % 4 == 0) {
+        
         akt_bst = (akt_bst + 1) % 10
-        setze_bst(akt_bst)
+        if (akt_bst == 0) {
+            zeigen=false;    
+        }   
+        if (zeigen) {
+            setze_bst(akt_bst)
+        }
+        
     }
 })
